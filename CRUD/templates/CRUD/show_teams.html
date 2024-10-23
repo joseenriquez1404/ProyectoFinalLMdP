@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CRUD/stylesteams.css' %}">
     <title>Lista de Equipos</title>
 </head>
 <body>
     <h1>Lista de Equipos</h1>
-    <table border="1">
+    <table>
         <tr>
             <th>Nombre del equipo</th>
             <th>País de origen</th>
@@ -26,6 +28,10 @@
         </tr>
         {% endfor %}
     </table>
+
+    <a href="{% url 'index' %}" class="btn">Volver</a>
+  
+
 </body>
 </html>
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Equipo
+from .models import Equipo, Jugador
 from .forms import EquipoForm
 
 # Create your views here.
@@ -26,3 +26,4 @@ def editTeam(request, equipo_id):
         form = EquipoForm(instance=equipo)
     
     return render(request, "CRUD/edit_team.html", {"form": form})
+
