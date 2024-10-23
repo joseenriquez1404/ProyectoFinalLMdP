@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Equipo(models.Model):
+    id = models.AutoField(primary_key=True)
     nombre_equipo = models.CharField(max_length=100)
     pais_origen = models.CharField(max_length=100)
     estado_origen = models.CharField(max_length=100)

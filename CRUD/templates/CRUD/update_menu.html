@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CRUD/styles.css' %}">
+    <title>Actualizar</title>
+</head>
+<body>
+    <h1>Actualizar</h1>
+    <h3>¿Qué opción desea actualizar?</h3>
+    <div class="options">
+        <div class="buttons">
+            <form action="{% url 'showTeam' %}" method="GET">
+                <button>Actualizar equipo</button>
+            </form>
+            <form  method="GET">
+                <button>Actualizar jugador</button>
+            </form>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

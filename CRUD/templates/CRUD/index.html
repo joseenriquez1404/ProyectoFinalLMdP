@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CRUD/styles.css' %}">
+    <title>Menú de opciones</title>
+</head>
+<body>
+    <h1>Menú de opciones</h1>
+    <div class="buttons">
+        <a href="">
+            <button>Añadir</button>
+        </a>
+        <a href="">
+            <button>Eliminar</button>
+        </a>
+        <a href="">
+            <button>Mostrar</button>
+        </a>
+        <a href="{% url 'updateMenu' %}">
+            <button>Actualizar</button>
+        </a>
+        
+    </div>
+</body>
+</html>

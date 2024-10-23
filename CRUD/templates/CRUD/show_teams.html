@@ -1,0 +1,31 @@
+<!-- mostrar_equipos.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Equipos</title>
+</head>
+<body>
+    <h1>Lista de Equipos</h1>
+    <table border="1">
+        <tr>
+            <th>Nombre del equipo</th>
+            <th>País de origen</th>
+            <th>Estado de origen</th>
+        </tr>
+        {% for equipo in equipos %}
+        <tr>
+            <td><a href="{% url 'editTeam' equipo.id %}">{{ equipo.nombre_equipo }}</a></td>
+            <td>{{ equipo.pais_origen }}</td>
+            <td>{{ equipo.estado_origen }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No hay equipos disponibles.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+

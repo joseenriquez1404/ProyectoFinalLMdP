@@ -1,0 +1,14 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    text-align: center;
+}
+
+.tabla{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    margin-top: 10px;
+}
