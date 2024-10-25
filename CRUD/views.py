@@ -14,6 +14,10 @@ def showTeam(request):
     equipos = Equipo.objects.all()
     return render(request, "CRUD/show_teams.html", {"equipos": equipos})
 
+def showTeamPlayers(request):
+    equipos = Equipo.objects.all()
+    return render(request, "CRUD/show_team_players.html", {"equipos": equipos})
+
 def editTeam(request, equipo_id):
     equipo  = get_object_or_404(Equipo, id=equipo_id)
 
@@ -27,3 +31,7 @@ def editTeam(request, equipo_id):
     
     return render(request, "CRUD/edit_team.html", {"form": form})
 
+def teamPlayers(request, equipo_id):
+    equipo  = get_object_or_404(Equipo, id=equipo_id)
+    jugadores = Jugador.objects.filter(equipo=equipo)
+    return render(request, "CRUD/show_players.html", {"jugadores": jugadores})
