@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CRUD/stylesteams.css' %}">
+    <title>Lista de Jugadores</title>
+</head>
+<body>
+    <h1>Lista de Jugadores</h1>
+    <table>
+        <tr>
+            <th>Nombre del Jugador</th>
+            <th>Apellido</th>
+            <th>Número de Playera</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Posición</th>
+        </tr>
+        {% for jugador in jugadores %}
+        <tr>
+            <td>{{ jugador.nombre_jugador }}</td>
+            <td>{{ jugador.apellido_jugador }}</td>
+            <td>{{ jugador.numero_playera }}</td>
+            <td>{{ jugador.fecha_nacimiento }}</td>
+            <td>{{ jugador.posicion_campo }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No hay jugadores disponibles.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'index' %}" class="btn">Volver</a>
+</body>
+</html>

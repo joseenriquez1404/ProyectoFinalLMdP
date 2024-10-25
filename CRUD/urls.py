@@ -10,4 +10,8 @@ urlpatterns = [
     path("update/player/show_teams/show_players/<int:equipo_id>/", views.teamPlayers, name="teamPlayers"),
     path("update/player/show_teams/show_players/edit_player/<int:jugador_id>/", views.editPlayer, name="editPlayer"),
     path("update/team/show_teams/<int:equipo_id>/", views.editTeam, name="editTeam"),
+    path("show/", views.showMenu, name="showMenu"),
+    path("show/teams/", views.showTeams, name="showTeams"),
+    path("show/players/", views.teams, name="teams"),
+    path("show/players/<int:equipo_id>/", views.teamPlayer, name="teamPlayer"),
 ]

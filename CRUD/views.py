@@ -3,20 +3,22 @@ from django.http import HttpResponse
 from .models import Equipo, Jugador
 from .forms import EquipoForm, JugadorForm
 
-# Create your views here.
+#Index
 def index(request):
     return render(request, "CRUD/index.html")
 
+#Update Functions
+
 def updateMenu(request):
-    return render(request, "CRUD/update_menu.html")
+    return render(request, "CRUD/Update/update_menu.html")
 
 def showTeam(request):
     equipos = Equipo.objects.all()
-    return render(request, "CRUD/show_teams.html", {"equipos": equipos})
+    return render(request, "CRUD/Update/show_teams.html", {"equipos": equipos})
 
 def showTeamPlayers(request):
     equipos = Equipo.objects.all()
-    return render(request, "CRUD/show_team_players.html", {"equipos": equipos})
+    return render(request, "CRUD/Update/show_team_players.html", {"equipos": equipos})
 
 def editTeam(request, equipo_id):
     equipo  = get_object_or_404(Equipo, id=equipo_id)
@@ -29,12 +31,12 @@ def editTeam(request, equipo_id):
     else:
         form = EquipoForm(instance=equipo)
     
-    return render(request, "CRUD/edit_team.html", {"form": form})
+    return render(request, "CRUD/Update/edit_team.html", {"form": form})
 
 def teamPlayers(request, equipo_id):
     equipo  = get_object_or_404(Equipo, id=equipo_id)
     jugadores = Jugador.objects.filter(equipo=equipo)
-    return render(request, "CRUD/show_players.html", {"jugadores": jugadores})
+    return render(request, "CRUD/Update/show_players.html", {"jugadores": jugadores})
 
 
 def editPlayer(request,  jugador_id):
@@ -49,5 +51,24 @@ def editPlayer(request,  jugador_id):
     else:
         form = JugadorForm(instance=jugador)
     
-    return render(request, "CRUD/edit_player.html", {"form": form})
+    return render(request, "CRUD/Update/edit_player.html", {"form": form})
+
+#Swow Functions
+def showMenu(request):
+    return render(request, "CRUD/Show/show_menu.html")
+
+def showTeams(request):
+    equipos = Equipo.objects.all()
+    return render(request, "CRUD/Show/show_teams.html", {"equipos": equipos})
+
+def teams(request):
+    equipos = Equipo.objects.all()
+    return render(request, "CRUD/Show/show_team.html", {"equipos": equipos})
+
+def teamPlayer(request, equipo_id):
+    equipo  = get_object_or_404(Equipo, id=equipo_id)
+    jugadores = Jugador.objects.filter(equipo=equipo)
+    return render(request, "CRUD/Show/show_players.html", {"jugadores": jugadores})
+
+
 
