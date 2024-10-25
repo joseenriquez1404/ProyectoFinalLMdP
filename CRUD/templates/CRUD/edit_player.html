@@ -1,0 +1,20 @@
+<!-- editar_equipo.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CRUD/stylesform.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Equipo</title>
+</head>
+<body>
+    <h1>Editar jugador</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Renderiza el formulario -->
+        <button type="submit">Guardar cambios</button>
+    </form>
+    <a href="{% url 'showTeam' %}">Cancelar</a>
+</body>
+</html>

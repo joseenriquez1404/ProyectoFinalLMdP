@@ -19,7 +19,7 @@
         </tr>
         {% for jugador in jugadores %}
         <tr>
-            <td><a href="">{{ jugador.nombre_jugador }}</a></td>
+            <td><a href="{% url 'editPlayer' jugador.id %}">{{ jugador.nombre_jugador }}</a></td>
             <td>{{ jugador.apellido_jugador }}</td>
             <td>{{ jugador.numero_playera }}</td>
             <td>{{ jugador.fecha_nacimiento }}</td>
