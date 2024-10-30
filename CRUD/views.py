@@ -3,25 +3,31 @@ from django.http import HttpResponse
 from .models import Equipo, Jugador
 from .forms import EquipoForm, JugadorForm
 
-#Index
+# Index
+
+
 def index(request):
     return render(request, "CRUD/index.html")
 
-#Update Functions
+# Update Functions
+
 
 def updateMenu(request):
     return render(request, "CRUD/Update/update_menu.html")
+
 
 def showTeam(request):
     equipos = Equipo.objects.all()
     return render(request, "CRUD/Update/show_teams.html", {"equipos": equipos})
 
+
 def showTeamPlayers(request):
     equipos = Equipo.objects.all()
     return render(request, "CRUD/Update/show_team_players.html", {"equipos": equipos})
 
+
 def editTeam(request, equipo_id):
-    equipo  = get_object_or_404(Equipo, id=equipo_id)
+    equipo = get_object_or_404(Equipo, id=equipo_id)
 
     if request.method == "POST":
         form = EquipoForm(request.POST, instance=equipo)
@@ -30,45 +36,84 @@ def editTeam(request, equipo_id):
             return redirect("showTeam")
     else:
         form = EquipoForm(instance=equipo)
-    
+
     return render(request, "CRUD/Update/edit_team.html", {"form": form})
 
+
 def teamPlayers(request, equipo_id):
-    equipo  = get_object_or_404(Equipo, id=equipo_id)
+    equipo = get_object_or_404(Equipo, id=equipo_id)
     jugadores = Jugador.objects.filter(equipo=equipo)
     return render(request, "CRUD/Update/show_players.html", {"jugadores": jugadores})
 
 
 def editPlayer(request,  jugador_id):
-    jugador  = get_object_or_404(Jugador, id=jugador_id)
-    
+    jugador = get_object_or_404(Jugador, id=jugador_id)
 
     if request.method == "POST":
         form = JugadorForm(request.POST, instance=jugador)
         if form.is_valid():
             form.save()
-            return redirect("index") 
+            return redirect("index")
     else:
         form = JugadorForm(instance=jugador)
-    
+
     return render(request, "CRUD/Update/edit_player.html", {"form": form})
 
-#Swow Functions
+# Swow Functions
+
+
 def showMenu(request):
     return render(request, "CRUD/Show/show_menu.html")
+
 
 def showTeams(request):
     equipos = Equipo.objects.all()
     return render(request, "CRUD/Show/show_teams.html", {"equipos": equipos})
 
+
 def teams(request):
     equipos = Equipo.objects.all()
     return render(request, "CRUD/Show/show_team.html", {"equipos": equipos})
 
+
 def teamPlayer(request, equipo_id):
-    equipo  = get_object_or_404(Equipo, id=equipo_id)
+    equipo = get_object_or_404(Equipo, id=equipo_id)
     jugadores = Jugador.objects.filter(equipo=equipo)
     return render(request, "CRUD/Show/show_players.html", {"jugadores": jugadores})
 
+# CREATE FUNCIONS
 
 
+def createMenu(request):
+    return render(request, "CRUD/Create/create_menu.html")
+
+
+def createTeam(request):
+    if request.method == "POST":
+        equipos = EquipoForm(request.POST)
+        if equipos.is_valid():
+            equipos.save()
+            return redirect("index")
+    else:
+        equipos = EquipoForm()
+    return render(request, "CRUD/create/create_teams.html", {"equipos": equipos})
+
+
+def createPlayer(request, equipo_id):
+    equipo = get_object_or_404(Equipo, id=equipo_id)
+    if request.method == 'POST':
+        jugadores = JugadorForm(request.POST)
+        if jugadores.is_valid():
+            jugador = jugadores.save(commit=False)
+            jugador.equipo = equipo
+            jugador.save()
+            return redirect('index')
+    else:
+        jugadores = JugadorForm()
+
+    return render(request, "CRUD/create/create_players.html", {"jugadores": jugadores})
+
+
+def createShowPlayers(request):
+    equipos = Equipo.objects.all()
+    return render(request, "CRUD/Create/create_show_players.html", {"equipos": equipos})
