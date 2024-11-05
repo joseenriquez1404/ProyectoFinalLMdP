@@ -117,3 +117,37 @@ def createPlayer(request, equipo_id):
 def createShowPlayers(request):
     equipos = Equipo.objects.all()
     return render(request, "CRUD/Create/create_show_players.html", {"equipos": equipos})
+
+
+# Delete functions
+
+def deleteMenu(request):
+    return render(request, "CRUD/Delete/delete_menu.html")
+
+
+def deleteShowTeams(request):
+    equipos = Equipo.objects.all()
+    return render(request, "CRUD/Delete/delete_show_teams.html", {"equipos": equipos})
+
+
+def deleteTeamAction(request, equipo_id):
+    equipos = Equipo.objects.filter(id=equipo_id)
+    equipos.delete()
+    return render(request, "CRUD/Delete/delete_team_action.html")
+
+
+def deleteShowTeamPlayer(request):
+    equipos = Equipo.objects.all()
+    return render(request, "CRUD/Delete/delete_show_team_player.html", {"equipos": equipos})
+
+
+def deletePlayer(request, equipo_id):
+    equipo = get_object_or_404(Equipo, id=equipo_id)
+    jugador = Jugador.objects.filter(equipo=equipo)
+    return render(request, "CRUD/Delete/delete_show_players_to_delete.html", {"jugadores": jugador})
+
+
+def deletePlayerAction(request, jugador_id):
+    jugador = Jugador.objects.filter(id=jugador_id)
+    jugador.delete()
+    return render(request, "CRUD/Delete/delete_player_action.html")

@@ -22,5 +22,15 @@ urlpatterns = [
     path("create/", views.createMenu, name="createMenu"),
     path("create/show_players/create_players/<int:equipo_id>",
          views.createPlayer, name='createPlayer'),
-    path("create/show_players", views.createShowPlayers, name="createShowPlayer")
+    path("create/show_players", views.createShowPlayers, name="createShowPlayer"),
+    path("delete/delete_menu", views.deleteMenu, name='deleteMenu'),
+    path("delete/delete_teams", views.deleteShowTeams, name="deleteTeams"),
+    path("delete/deleted_team/<int:equipo_id>",
+         views.deleteTeamAction, name="deleteTeamAction"),
+    path("delete/show_team_players",
+         views.deleteShowTeamPlayer, name="deleteShowTeamPlayer"),
+    path("delete/players_to_delete/<int:equipo_id>",
+         views.deletePlayer, name="deletePlayer"),
+    path("delete/delete_player_action/<int:jugador_id>",
+         views.deletePlayerAction, name='deletePlayerAction')
 ]

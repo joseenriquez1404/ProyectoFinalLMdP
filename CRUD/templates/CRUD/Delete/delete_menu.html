@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CRUD/styles.css' %}">
+    <title>Borrar</title>
+</head>
+
+<body>
+    <h1>Borrar</h1>
+    <h3>¿Qué opción desea borrar?</h3>
+    <div class="options">
+        <div class="buttons">
+            <form action="{% url 'deleteTeams' %}" method="GET">
+                <button>Borrar equipo</button>
+            </form>
+            <form action="{% url 'deleteShowTeamPlayer' %}" method="GET">
+                <button>Borrar jugador</button>
+            </form>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
