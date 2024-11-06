@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  django:
+    build: .
+    container_name: django-container
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db  # Asegura que el contenedor de Django espere a que el contenedor db esté listo
+    environment:
+      - DB_HOST=mysql-pia  # Nombre del contenedor de MySQL (o la IP del contenedor)
+      - DB_NAME=lmppia
+      - DB_USER=root
+      - DB_PASSWORD=root
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-pia
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # Contraseña de root
+      MYSQL_DATABASE: pialmp
+      MYSQL_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql  # Persistencia de datos
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+

@@ -96,7 +96,7 @@ def createTeam(request):
             return redirect("index")
     else:
         equipos = EquipoForm()
-    return render(request, "CRUD/create/create_teams.html", {"equipos": equipos})
+    return render(request, "CRUD/Create/create_teams.html", {"equipos": equipos})
 
 
 def createPlayer(request, equipo_id):
@@ -111,7 +111,7 @@ def createPlayer(request, equipo_id):
     else:
         jugadores = JugadorForm()
 
-    return render(request, "CRUD/create/create_players.html", {"jugadores": jugadores})
+    return render(request, "CRUD/Create/create_players.html", {"jugadores": jugadores})
 
 
 def createShowPlayers(request):

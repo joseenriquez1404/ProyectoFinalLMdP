@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'proyecto_final_LMP',
-        'USER': 'diego',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'NAME': 'lmppia',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'mysql-pia',
         'PORT': '3306'
     }
 }
