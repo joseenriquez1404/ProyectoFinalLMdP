@@ -4,7 +4,7 @@ pipeline{
 		stage('Pull Changes'){
 			steps{
 				deleteDir()
-				git url: https://github.com/joseenriquez1404/ProyectoFinalLMdP
+				git url:' https://github.com/joseenriquez1404/ProyectoFinalLMdP'
 			}	
 		
 		}
