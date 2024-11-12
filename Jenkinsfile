@@ -9,4 +9,11 @@ pipeline{
 		
 		}
 	}
+
+	stage('Copy to Local Directory') {
+    steps {
+        // Copia todos los archivos a un directorio permanente
+        sh 'cp -r * /home/jose/ProyectoFinalLMdP'
+    }
+}
 }
