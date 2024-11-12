@@ -15,6 +15,7 @@ h3 {
     display: grid;
     justify-content: center;
     margin-top: 10px;
+    background-color: bisque;
 }
 
 button {
