@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         GITHUB_REPO = 'https://github.com/joseenriquez1404/ProyectoFinalLMdP.git'// Reemplaza con tu URL de GitHub
-        DOCKER_COMPOSE_FILE = 'ProyectoFinalLMdP/docker-compose.yml'
+        DOCKER_COMPOSE_FILE = 'Descargas/ProyectoFinalLMdP/docker-compose.yml'
         DOCKER_COMPOSE_DIR = 'ProyectoFinalLMdP'  // Directorio donde está el archivo docker-compose.yml
     }
     
